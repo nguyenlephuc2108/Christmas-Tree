@@ -6,6 +6,7 @@
     position: fixed;
     border-radius: 100%;
     filter: contrast(999%) drop-shadow(0px 0px 5px #fff) brightness(300%) blur(0.5px) brightness(100%) contrast(50%) brightness(200%);
+    /* filter: drop-shadow(0px 0px 5px #fff) blur(1px) brightness(200%); */
     
     /* width: 5px;
     height: 5px; */

@@ -3,15 +3,15 @@ const HEIGHT = 1000
 const SIZERATIO = 300
 let WindowWidth, WindowHeight
 
-const NumberOfParticles = 500
+const NumberOfParticles = 300
 const RADIUS = 300
 const STARTRADIUS = RADIUS / 100
 const ANGlEVIEW = 5
-const SPEED = 1
+const SPEED = 0.75
 
 let PARTICLES = []
 const TREEHEIGHT = 800
-const SMOOTHLY = 300
+const SMOOTHLY = 200
 
 class Particle{
     constructor(floor, color, size, x, y, z, radius, radian){
@@ -26,7 +26,8 @@ class Particle{
         this.now_radius = RADIUS
         this.radian = radian
         this.speed = SPEED + (Math.random() * 1 - 0.5)
-        this.rotate_speed = SPEED - (SPEED / this.radius)
+        // this.rotate_speed = SPEED - (SPEED / this.radius)
+        this.rotate_speed = SPEED / 3
         
         this.type = "none"
         // if (this.radius <= STARTRADIUS){
@@ -62,7 +63,7 @@ class Particle{
         this.z = Math.sin(this.radian) * this.now_radius
 
         if (this.y > this.floor){
-            this.y -= this.speed
+            this.y -= this.speed * 2
         }
 
         // this.now_size += (this.size - this.now_size) / SMOOTHLY
@@ -89,7 +90,7 @@ async function setupParticles(){
 
     for (let id = 1; id <= NumberOfParticles; id += 1){
         let floor = TREEHEIGHT / 2
-        let radius = (RADIUS * 1) * (id / (NumberOfParticles / 10)) * Math.random()
+        let radius = (RADIUS * 1) * (id / (NumberOfParticles / 5)) * Math.random()
         let color = "#fff"
         // if (radius < RADIUS / 10) color = "#a00"
         let rad = (id * 360) * Math.random() * Math.PI / 180
@@ -135,21 +136,21 @@ async function setupParticles(){
     }
     // let colors = ["#f00", "#ff0", "#00f", "#fff"]
     let colors = ["#fff"]
-    for (let id = 1; id <= NumberOfParticles/10; id += 1){
-        let floor = TREEHEIGHT * ((id / (NumberOfParticles/10)) - 0.5)
-        let radius = (RADIUS * 2) * (id / (NumberOfParticles/10)) * Math.random()
-        let color = colors[id%colors.length]
-        // if (radius < RADIUS / 10) color = "#a00"
-        let rad = (id * 360) * Math.random() * Math.PI / 180
-        let x = Math.cos(rad) * radius
-        let y = TREEHEIGHT / 2
-        let z = Math.sin(rad) * radius
-        let particle = new Particle(floor, color, 4, x, y, z, radius, rad)
+    // for (let id = 1; id <= NumberOfParticles/10; id += 1){
+    //     let floor = TREEHEIGHT * ((id / (NumberOfParticles/10)) - 0.5)
+    //     let radius = (RADIUS * 2) * (id / (NumberOfParticles/10)) * Math.random()
+    //     let color = colors[id%colors.length]
+    //     // if (radius < RADIUS / 10) color = "#a00"
+    //     let rad = (id * 360) * Math.random() * Math.PI / 180
+    //     let x = Math.cos(rad) * radius
+    //     let y = TREEHEIGHT / 2
+    //     let z = Math.sin(rad) * radius
+    //     let particle = new Particle(floor, color, 4, x, y, z, radius, rad)
 
-        particle.updateParticlesProperties()
+    //     particle.updateParticlesProperties()
 
-        PARTICLES.push(particle)
-    }
+    //     PARTICLES.push(particle)
+    // }
 }
 
 function loop(){
