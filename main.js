@@ -3,7 +3,7 @@ const HEIGHT = 1000
 const SIZERATIO = 300
 let WindowWidth, WindowHeight
 
-const NumberOfParticles = 300
+const NumberOfParticles = 500
 const RADIUS = 300
 const STARTRADIUS = RADIUS / 100
 const ANGlEVIEW = 5
